@@ -17,7 +17,7 @@
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/blood league.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -13108,6 +13108,19 @@ ul.typeahead-list  > li > a.pull-right {
 .ansi-bold { font-weight: bold; }
 
     </style>
+<style type="text/css">
+    /*This file contains any manual css for this page that needs to override the global styles.
+This is only required when different pages style the same element differently. This is just
+a hack to deal with our current css styles and no new styling should be added in this file.*/
+
+#ipython-main-app {
+    position: relative;
+}
+#jupyter-main-app {
+    position: relative;
+}
+
+    </style>
 
 
 <style type="text/css">
@@ -13250,8 +13263,8 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Agenda:">Agenda:<a class="anchor-link" href="#Agenda:">&#182;</a></h2><ol>
-<li>Using the Jupyter Notebook's Built-In Capabilities</li>
-<li>Using RISE</li>
+<li>Slideshows Using the Jupyter Notebook's Built-In Capabilities</li>
+<li>Slideshows Using RISE</li>
 <li>Hosting Reveal.js Jupyter Notebook Presentations on GitHub Pages</li>
 </ol>
 
@@ -13268,7 +13281,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Built-In-Slide-Capabilities-Workflow">Built-In Slide Capabilities Workflow<a class="anchor-link" href="#Built-In-Slide-Capabilities-Workflow">&#182;</a></h3><h4 id="Workflow-overview">Workflow overview<a class="anchor-link" href="#Workflow-overview">&#182;</a></h4><ol>
+<h3 id="Jupyter-Notebook's-Built-In-Slideshows-Workflow">Jupyter Notebook's Built-In Slideshows Workflow<a class="anchor-link" href="#Jupyter-Notebook's-Built-In-Slideshows-Workflow">&#182;</a></h3><h4 id="Follow-the-steps:">Follow the steps:<a class="anchor-link" href="#Follow-the-steps:">&#182;</a></h4><ol>
 <li>Assign slide types to the notebook's cells. </li>
 <li>Convert the notebook to a slideshow. Pass styling options.</li>
 <li>Present the slideshow (modifications will not be possible).</li>
@@ -13283,9 +13296,9 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Slide-Types-Overview">Slide Types Overview<a class="anchor-link" href="#Slide-Types-Overview">&#182;</a></h3><p>There are currently four types of slides:</p>
+<h3 id="Slide-Types-Overview">Slide Types Overview<a class="anchor-link" href="#Slide-Types-Overview">&#182;</a></h3><p>Currently there are four types of slides:</p>
 <ul>
-<li><strong>Slide</strong>: Each cell is presented in a separate slide. Useful for sections or major points.</li>
+<li><strong>Slide</strong>: Each cell is presented in a separate slide. Useful for sections or major points. Previous/next slides are accessed by navigating left/right.</li>
 <li><strong>Subslide</strong>: A continuation of the point of the previous slide. Additional slides accessed by navigating up/down.</li>
 <li><strong>Fragment</strong>: Presents multiple cells in a single slide one by one. Presented on the previous slide/subslide.</li>
 <li><strong>Skip/Notes</strong>: Not exported</li>
@@ -13297,7 +13310,8 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="That-is-a-fragment!">That is a fragment!<a class="anchor-link" href="#That-is-a-fragment!">&#182;</a></h4>
+<h4 id="That-is-a-fragment!">That is a fragment!<a class="anchor-link" href="#That-is-a-fragment!">&#182;</a></h4><p>Make sure there is enough space for all of them.</p>
+
 </div>
 </div>
 </div></div></section><section>
@@ -13373,8 +13387,15 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The RISE (Reveal.js Ipython Slideshow Extension) addon allows to make the slideshow live. It also works with Ipython Widgets.</p>
-<h4 id="Installing-RISE">Installing <code>RISE</code><a class="anchor-link" href="#Installing-RISE">&#182;</a></h4><ul>
+<h3 id="RISE-Overview">RISE Overview<a class="anchor-link" href="#RISE-Overview">&#182;</a></h3><p>The RISE (Reveal.js Ipython Slideshow Extension) addon allows to make the slideshow live. It also works with Ipython Widgets.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Installing-RISE">Installing RISE<a class="anchor-link" href="#Installing-RISE">&#182;</a></h3><ul>
 <li>Use the <code>pip install RISE</code> command to install the Python module.</li>
 <li>Use the <code>jupyter-nbextension install rise --py --sys-prefix</code> to install the jupyter notebook extension.</li>
 <li>Use the <code>jupyter-nbextension enable rise --py --sys-prefix</code> to initialize RISE every time the notebook loads.</li>
@@ -13387,8 +13408,8 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Using-RISE">Using <code>RISE</code><a class="anchor-link" href="#Using-RISE">&#182;</a></h4><p><code>RISE</code> should have added a button to the Notebook. Click it to toggle the slideshow mode.</p>
-<h4 id="Customizing-RISE">Customizing <code>RISE</code><a class="anchor-link" href="#Customizing-RISE">&#182;</a></h4><ul>
+<h3 id="Using-RISE">Using RISE<a class="anchor-link" href="#Using-RISE">&#182;</a></h3><p><code>RISE</code> should have added a button to the Notebook. Click it to toggle the slideshow mode.</p>
+<h3 id="Customizing-RISE">Customizing RISE<a class="anchor-link" href="#Customizing-RISE">&#182;</a></h3><ul>
 <li>Use this link to customize <code>RISE</code>: <a href="https://rise.readthedocs.io/en/docs_hot_fixes/customize.html">https://rise.readthedocs.io/en/docs_hot_fixes/customize.html</a></li>
 </ul>
 
@@ -13405,7 +13426,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Steps-to-render-a-presentation-on-GitHub-Pages">Steps to render a presentation on GitHub Pages<a class="anchor-link" href="#Steps-to-render-a-presentation-on-GitHub-Pages">&#182;</a></h4><ol>
+<h3 id="Steps-to-render-a-presentation-on-GitHub-Pages">Steps to render a presentation on GitHub Pages<a class="anchor-link" href="#Steps-to-render-a-presentation-on-GitHub-Pages">&#182;</a></h3><ol>
 <li>The final export page should be named <code>index.html</code>. </li>
 <li>Clone <code>reveal.js</code> into the repository where the slideshow exists.</li>
 <li>Export the notebook to html slides.</li>
@@ -13453,7 +13474,7 @@ require(
             progress: true,
             history: true,
 
-            transition: "none",
+            transition: "slide",
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
@@ -13474,7 +13495,7 @@ require(
         Reveal.addEventListener('slidechanged', update);
 
         function setScrollingSlide() {
-            var scroll = true
+            var scroll = false
             if (scroll === true) {
               var h = $('.reveal').height() * 0.95;
               $('section.present').find('section')
