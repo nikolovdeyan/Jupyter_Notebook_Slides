@@ -17,7 +17,7 @@
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -13263,9 +13263,9 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Agenda:">Agenda:<a class="anchor-link" href="#Agenda:">&#182;</a></h2><ol>
-<li>Slideshows Using the Jupyter Notebook's Built-In Capabilities</li>
-<li>Slideshows Using RISE</li>
-<li>Hosting Reveal.js Jupyter Notebook Presentations on GitHub Pages</li>
+<li>Slideshows Using Jupyter's <code>nbconvert</code></li>
+<li>Live Slides With <code>RISE</code></li>
+<li>Hosting Notebook Presentations on GitHub Pages</li>
 </ol>
 
 </div>
@@ -13274,7 +13274,18 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-the-Jupyter-Notebook's-Built-In-Capabilities">Using the Jupyter Notebook's Built-In Capabilities<a class="anchor-link" href="#Using-the-Jupyter-Notebook's-Built-In-Capabilities">&#182;</a></h2>
+<h2 id="Slideshows-Using-Jupyter's-nbconvert">Slideshows Using Jupyter's <code>nbconvert</code><a class="anchor-link" href="#Slideshows-Using-Jupyter's-nbconvert">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Jupyter's-nbconvert-Overview">Jupyter's <code>nbconvert</code> Overview<a class="anchor-link" href="#Jupyter's-nbconvert-Overview">&#182;</a></h3><p>Jupyter Notebooks can optionally be converted to slideshow presentations. To do that a <code>Slide Type</code> must be selected for each cell that needs to be included in the presentation. Finally, the workbook needs to be converted to an html file using <code>nbconvert</code>.</p>
+<h4 id="Turning-on-the-slideshow-tools">Turning on the slideshow tools<a class="anchor-link" href="#Turning-on-the-slideshow-tools">&#182;</a></h4><ul>
+<li>Go to <code>View</code> and select <code>Cell Toolbar</code> &gt; <code>Slideshow</code>. A dropdown control will appear on the right side of the notebook cells.</li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -13286,9 +13297,6 @@ a.anchor-link {
 <li>Convert the notebook to a slideshow. Pass styling options.</li>
 <li>Present the slideshow (modifications will not be possible).</li>
 </ol>
-<h4 id="Turning-on-the-slideshow-tools">Turning on the slideshow tools<a class="anchor-link" href="#Turning-on-the-slideshow-tools">&#182;</a></h4><ul>
-<li>Go to <code>View</code> and select <code>Cell Toolbar</code> &gt; <code>Slideshow</code>. A dropdown control will appear on the right side of the notebook cells.</li>
-</ul>
 
 </div>
 </div>
@@ -13319,12 +13327,13 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Converting-the-notebook-to-a-slideshow">Converting the notebook to a slideshow<a class="anchor-link" href="#Converting-the-notebook-to-a-slideshow">&#182;</a></h3><ul>
-<li>First save and exit the notebook. Stop the Jupyter server.</li>
+<li>Save and exit the notebook. Stop the Jupyter server.</li>
 <li>Convert the notebook using the following command: <code>jupyter nbconvert notebook_name.ipynb --to slides --post serve</code></li>
-<li>All configuration options are provided <a href="https://nbconvert.readthedocs.io/en/latest/config_options.html">here</a>. </li>
+<li>The <code>--post serve</code> option will start an html server on localhost to use for the presentation.</li>
 <li>A template command is given below:
 <pre><code>jupyter nbconvert index.ipynb --to slides --post serve --SlidesExporter.reveal_theme='blood league' --SlidesExporter.reveal_scroll=True --SlidesExporter.reveal_transition='none' --SlidesExporter.reveal_url_prefix='reveal.js'</code></pre>
 </li>
+<li>All configuration options are provided <a href="https://nbconvert.readthedocs.io/en/latest/config_options.html">here</a>. </li>
 </ul>
 
 </div>
@@ -13333,15 +13342,43 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Slideshow-conversion-configuration-options">Slideshow conversion configuration options<a class="anchor-link" href="#Slideshow-conversion-configuration-options">&#182;</a></h4><ul>
-<li><code>SlidesExporter.font_awesome_url</code>: URL to load font awesome from. </li>
-<li><code>SlidesExporter.jquery_url</code>: Url to load jQuery from.</li>
-<li><code>SlidesExporter.require_js_url</code>: Url to load require.js from.</li>
-<li><code>SlidesExporter.reveal_scroll</code>: Set to <code>True</code> to enable scrolling within each slide.</li>
-<li><code>SlidesExporter.reveal_theme</code>: The name of the reveal.js theme to use. Use the following path to add/customize themes: <code>reveal_url_prefix/css/theme/reveal_theme.css</code> </li>
-<li><code>SlidesExporter.reveal_transition</code>: The name of the reveal.js transition to use.</li>
-<li><code>SlidesExporter.reveal_url_prefix</code>: The URL prefix for reveal.js. Defaults to the reveal CDN, but doesn't have to. Should be a relative path to a local copy of reveal.js.</li>
-</ul>
+<table>
+<thead><tr>
+<th style="text-align:center">Parameter</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>SlidesExporter.font_awesome_url</code></td>
+<td style="text-align:center">URL to load font awesome from.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SlidesExporter.jquery_url</code></td>
+<td style="text-align:center">Url to load jQuery from.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SlidesExporter.require_js_url</code></td>
+<td style="text-align:center">Url to load require.js from.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SlidesExporter.reveal_scroll</code></td>
+<td style="text-align:center">Set to <code>True</code> to enable scrolling within each slide.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SlidesExporter.reveal_theme</code></td>
+<td style="text-align:center">The name of the reveal.js theme to use. Use the following path to add/customize themes: <code>reveal_url_prefix/css/theme/</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SlidesExporter.reveal_transition</code></td>
+<td style="text-align:center">The name of the reveal.js transition to use.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>SlidesExporter.reveal_url_prefix</code></td>
+<td style="text-align:center">The URL prefix for reveal.js. Defaults to the reveal CDN, but doesn't have to. Should be a relative path to a local copy of reveal.js.</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
@@ -13419,7 +13456,19 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Hosting-Reveal.js-Jupyter-Notebook-Presentations-on-GitHub-Pages">Hosting Reveal.js Jupyter Notebook Presentations on GitHub Pages<a class="anchor-link" href="#Hosting-Reveal.js-Jupyter-Notebook-Presentations-on-GitHub-Pages">&#182;</a></h2>
+<h2 id="Hosting-Notebook-Presentations-on-GitHub-Pages">Hosting Notebook Presentations on GitHub Pages<a class="anchor-link" href="#Hosting-Notebook-Presentations-on-GitHub-Pages">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Hosting--on-GitHub-Pages-Overview">Hosting  on GitHub Pages Overview<a class="anchor-link" href="#Hosting--on-GitHub-Pages-Overview">&#182;</a></h3><h4 id="Requirements-to-render-a-reveal.js-slideshow-from-gh-pages:">Requirements to render a reveal.js slideshow from gh-pages:<a class="anchor-link" href="#Requirements-to-render-a-reveal.js-slideshow-from-gh-pages:">&#182;</a></h4><ul>
+<li>The presentation's name should be <code>index.html</code> in order to render directly from the repo name.</li>
+<li><code>Reveal.js</code> should be added as a submodule to the repository or be available as a fork for the user publishing.</li>
+<li>The notebook should be exported properly with the <code>--reveal-prefix</code> configuration parameter.</li>
+</ul>
+
 </div>
 </div>
 </div></section><section>
@@ -13427,11 +13476,17 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Steps-to-render-a-presentation-on-GitHub-Pages">Steps to render a presentation on GitHub Pages<a class="anchor-link" href="#Steps-to-render-a-presentation-on-GitHub-Pages">&#182;</a></h3><ol>
-<li>The final export page should be named <code>index.html</code>. </li>
-<li>Clone <code>reveal.js</code> into the repository where the slideshow exists.</li>
-<li>Export the notebook to html slides.</li>
-<li>Rename the exported notebook to <code>index.html</code> to allow render in GitHub Pages.</li>
-<li>Push the changes to the repository.</li>
+<li>Ensure that all needed cells in the Jupyter Notebook have been assigned a <code>Slide Type</code> property.</li>
+<li>Add <code>reveal.js</code> as a submodule to the repository where the presentation is located. Use the following command:
+<pre><code>git submodule add https://github.com/hakimel/reveal.js.git reveal.js</code></pre>
+</li>
+<li>Rename the notebook to <code>index.ipynb</code>. </li>
+<li>Stop the Jupyter Notebook server and convert the notebook with <code>nbconvert</code>. The basic command is as follows:
+<pre><code>jupyter nbconvert --to slides index.jpynb --reveal-prefix=reveal.js</code></pre>
+</li>
+<li>Rename the resulting <code>index.slides.html</code> file to <code>index.html</code>.</li>
+<li>Push the contents of the repo to GitHub.</li>
+<li>Enable the repository as GitHub Pages site: Go to the repo's Settings and look for GitHub Pages section. Change the Source setting to <code>master branch</code>. </li>
 </ol>
 
 </div>
@@ -13445,10 +13500,24 @@ a.anchor-link {
 <li><a href="https://dzone.com/articles/creating-presentations-with-jupyter-notebook">https://dzone.com/articles/creating-presentations-with-jupyter-notebook</a></li>
 <li><a href="http://blog.kdheepak.com/jupyter-notebook-revealjs-and-github-pages.html">http://blog.kdheepak.com/jupyter-notebook-revealjs-and-github-pages.html</a></li>
 <li><a href="https://www.blog.pythonlibrary.org/2018/09/25/creating-presentations-with-jupyter-notebook/">https://www.blog.pythonlibrary.org/2018/09/25/creating-presentations-with-jupyter-notebook/</a></li>
+<li><a href="https://medium.com/learning-machine-learning/present-your-data-science-projects-with-jupyter-slides-75f20735eb0f">https://medium.com/learning-machine-learning/present-your-data-science-projects-with-jupyter-slides-75f20735eb0f</a></li>
 </ul>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div></section></section>
 </div>
 </div>
